@@ -1,5 +1,4 @@
 import {
-  Box,
   Card,
   CardContent,
   Divider,
@@ -25,21 +24,28 @@ const RegisterCard = () => {
   const handleMouseDownPassword = () => setShowPassword(!showPassword)
 
   const schema = yup.object().shape({
-    email: yup.string().email().required(),
+    email: yup
+      .string()
+      .email('Podaj poprawny email')
+      .required('Email jest polem obowiązkowym'),
     password: yup
       .string()
-      .required()
+      .required('Hasło jest polem obowiązkowym')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
         'Hasło musi zawierać conajmniej 8 znaków, jedną dużą literę, jedną małą literę, jedną cyfrę i jeden znak specjalny'
       ),
     confirmPassword: yup
       .string()
-      .required()
-      .oneOf([yup.ref('password')]),
+      .required('Powtórz hasło jest polem obowiązkowym')
+      .oneOf([yup.ref('password')], 'Hasła muszą być jednakowe'),
   })
 
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   })
 
@@ -69,14 +75,25 @@ const RegisterCard = () => {
             label="Email"
             variant="standard"
             sx={{ m: 1 }}
+            color="info"
             {...register('email')}
           />
+          {errors.email?.message && (
+            <Typography
+              variant="caption"
+              color="error"
+              sx={{ ml: 1 }}
+            >
+              {errors.email?.message.toString()}
+            </Typography>
+          )}
 
           <TextField
             type={showPassword ? 'text' : 'password'}
             label="Hasło"
             variant="standard"
             sx={{ m: 1 }}
+            color="info"
             {...register('password')}
             InputProps={{
               endAdornment: (
@@ -95,14 +112,33 @@ const RegisterCard = () => {
               ),
             }}
           />
+          {errors.password?.message && (
+            <Typography
+              variant="caption"
+              color="error"
+              sx={{ ml: 1 }}
+            >
+              {errors.password?.message.toString()}
+            </Typography>
+          )}
 
           <TextField
             type="password"
             label="Powtórz hasło"
             variant="standard"
             sx={{ m: 1 }}
+            color="info"
             {...register('confirmPassword')}
           />
+          {errors.confirmPassword?.message && (
+            <Typography
+              variant="caption"
+              color="error"
+              sx={{ ml: 1 }}
+            >
+              {errors.confirmPassword?.message.toString()}
+            </Typography>
+          )}
 
           <Divider variant="middle" sx={{ m: 3 }} />
 

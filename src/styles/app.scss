@@ -1,0 +1,21 @@
+.appContainer {
+  width: 100vw;
+  height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .formCard {
+    max-width: 400px;
+    min-width: 300px;
+    min-height: 60svh;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

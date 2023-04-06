@@ -71,7 +71,7 @@ const RegisterCard = () => {
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
           <TextField
-            type="email"
+            type="text"
             label="Email"
             variant="standard"
             sx={{ m: 1 }}

@@ -21,7 +21,6 @@ const RegisterCard = () => {
   const [showPassword, setShowPassword] = useState(false)
 
   const handleClickShowPassword = () => setShowPassword(!showPassword)
-  const handleMouseDownPassword = () => setShowPassword(!showPassword)
 
   const schema = yup.object().shape({
     email: yup
@@ -75,7 +74,7 @@ const RegisterCard = () => {
             label="Email"
             variant="standard"
             sx={{ m: 1 }}
-            color="info"
+            color={errors.email?.message ? 'error' : 'info'}
             {...register('email')}
           />
           {errors.email?.message && (
@@ -93,15 +92,12 @@ const RegisterCard = () => {
             label="Hasło"
             variant="standard"
             sx={{ m: 1 }}
-            color="info"
+            color={errors.password?.message ? 'error' : 'info'}
             {...register('password')}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
+                  <IconButton onClick={handleClickShowPassword}>
                     {showPassword ? (
                       <VisibilityOffIcon />
                     ) : (
@@ -127,7 +123,7 @@ const RegisterCard = () => {
             label="Powtórz hasło"
             variant="standard"
             sx={{ m: 1 }}
-            color="info"
+            color={errors.confirmPassword?.message ? 'error' : 'info'}
             {...register('confirmPassword')}
           />
           {errors.confirmPassword?.message && (

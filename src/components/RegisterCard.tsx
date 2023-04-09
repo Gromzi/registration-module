@@ -33,7 +33,7 @@ const RegisterCard = () => {
     <Card
       className="formCard"
       elevation={16}
-      sx={{ backgroundColor: 'primary.main' }}
+      sx={{ backgroundColor: 'primary.main', borderRadius: 3 }}
     >
       <Typography
         variant="h1"

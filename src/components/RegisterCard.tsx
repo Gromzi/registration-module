@@ -16,57 +16,15 @@ import {
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 
-import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect, useState } from 'react'
-
-import isValidNIP from 'is-valid-nip'
+import { useRegistrationForm } from '../formLogic/useRegistrationForm'
 
 const RegisterCard = () => {
   const [showPassword, setShowPassword] = useState(false)
-
   const handleClickShowPassword = () => setShowPassword(!showPassword)
 
-  const schema = yup.object().shape({
-    email: yup
-      .string()
-      .email('Podaj poprawny email')
-      .required('Email jest polem wymaganym'),
-    password: yup
-      .string()
-      .required('Hasło jest polem wymaganym')
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        'Hasło musi zawierać conajmniej 8 znaków, jedną dużą literę, jedną małą literę, jedną cyfrę i jeden znak specjalny'
-      ),
-    confirmPassword: yup
-      .string()
-      .required('Powtórz hasło jest polem wymaganym')
-      .oneOf([yup.ref('password')], 'Hasła muszą być jednakowe'),
-    nip: yup
-      .string()
-      .required('Numer NIP jest wymagany')
-      .test('isValidNIP', 'Niepoprawny numer NIP', function (value) {
-        return isValidNIP(value)
-      }),
-    tel: yup
-      .string()
-      .matches(
-        /^(?:[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6})?$/im,
-        'Podaj poprawny numer telefonu (format +12345678901)'
-      ),
-    role: yup.string().required('Rola jest wymagana'),
-  })
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm({
-    resolver: yupResolver(schema),
-  })
+  const { register, handleSubmit, errors, setValue } =
+    useRegistrationForm()
 
   const onSubmit = (data: Object) => {
     console.log('Ya boy could NEVER', data)

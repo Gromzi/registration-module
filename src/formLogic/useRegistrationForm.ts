@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+import FormValues from '../types/formValues'
 import schema from './validationSchema'
 
 export const useRegistrationForm = () => {
@@ -8,7 +9,7 @@ export const useRegistrationForm = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm({
+  } = useForm<FormValues>({
     resolver: yupResolver(schema),
   })
 

@@ -13,6 +13,8 @@
     // min-width: 300px;
     min-height: 60svh;
 
+    overflow-y: auto;
+
     form {
       display: flex;
       flex-direction: column;
@@ -21,11 +23,11 @@
   }
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 400px) {
   .appContainer {
     .formCard {
       width: auto;
-      max-width: 300px;
+      padding: 0 20px;
     }
   }
 }

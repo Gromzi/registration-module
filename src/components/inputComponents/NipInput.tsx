@@ -11,6 +11,7 @@ const NipInput = ({ register, errors }: InputProps) => {
         sx={{ m: 1 }}
         color={errors.nip?.message ? 'error' : 'info'}
         {...register('nip')}
+        defaultValue=""
       />
       {errors.nip?.message && (
         <Typography variant="caption" color="error" sx={{ ml: 1 }}>

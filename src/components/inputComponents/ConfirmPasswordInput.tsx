@@ -11,6 +11,7 @@ const ConfirmPasswordInput = ({ register, errors }: InputProps) => {
         sx={{ m: 1 }}
         color={errors.confirmPassword?.message ? 'error' : 'info'}
         {...register('confirmPassword')}
+        defaultValue=""
       />
       {errors.confirmPassword?.message && (
         <Typography variant="caption" color="error" sx={{ ml: 1 }}>

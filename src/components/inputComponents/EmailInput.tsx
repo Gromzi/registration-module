@@ -11,6 +11,7 @@ const EmailInput = ({ register, errors }: InputProps) => {
         sx={{ m: 1 }}
         color={errors.email?.message ? 'error' : 'info'}
         {...register('email')}
+        defaultValue=""
       />
       {errors.email?.message && (
         <Typography variant="caption" color="error" sx={{ ml: 1 }}>

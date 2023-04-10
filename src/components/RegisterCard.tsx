@@ -5,29 +5,21 @@ import {
   Typography,
   Button,
 } from '@mui/material'
-
-import { useEffect } from 'react'
-import { useRegistrationForm } from '../formLogic/useRegistrationForm'
-
-import EmailInput from './inputComponents/EmailInput'
+import { useState } from 'react'
 import FormValues from '../types/formValues'
-import PasswordInput from './inputComponents/PasswordInput'
-import ConfirmPasswordInput from './inputComponents/ConfirmPasswordInput'
-import NipInput from './inputComponents/NipInput'
-import PhoneNumberInput from './inputComponents/PhoneNumberInput'
-import RoleInput from './inputComponents/RoleInput'
+import RegisterForm from './RegisterForm'
+import Summary from './Summary'
 
 const RegisterCard = () => {
-  const { register, handleSubmit, errors, setValue } =
-    useRegistrationForm()
-
-  const onSubmit = (data: FormValues) => {
-    console.log('Ya boy could NEVER', data)
-  }
-
-  useEffect(() => {
-    setValue('role', '')
-  }, [setValue])
+  const [showSummary, setShowSummary] = useState(false)
+  const [userData, setUserData] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+    nip: '',
+    tel: '',
+    role: '',
+  })
 
   return (
     <Card
@@ -45,23 +37,18 @@ const RegisterCard = () => {
       <Divider variant="middle" />
 
       <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-          <EmailInput register={register} errors={errors} />
-          <PasswordInput register={register} errors={errors} />
-          <ConfirmPasswordInput register={register} errors={errors} />
-
-          <Divider variant="middle" sx={{ ml: 3, mt: 3, mr: 3 }} />
-
-          <NipInput register={register} errors={errors} />
-          <PhoneNumberInput register={register} errors={errors} />
-          <RoleInput register={register} errors={errors} />
-
-          <Divider variant="middle" sx={{ m: 3 }} />
-
-          <Button type="submit" variant="contained">
-            Submit
-          </Button>
-        </form>
+        {showSummary ? (
+          <Summary
+            userData={userData}
+            setShowSummary={setShowSummary}
+          />
+        ) : (
+          <RegisterForm
+            userData={userData}
+            setUserData={setUserData}
+            setShowSummary={setShowSummary}
+          />
+        )}
       </CardContent>
     </Card>
   )

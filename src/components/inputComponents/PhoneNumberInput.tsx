@@ -11,6 +11,7 @@ const phoneNumberInput = ({ register, errors }: InputProps) => {
         sx={{ m: 1 }}
         color={errors.tel?.message ? 'error' : 'info'}
         {...register('tel')}
+        defaultValue=""
       />
       {errors.tel?.message && (
         <Typography variant="caption" color="error" sx={{ ml: 1 }}>

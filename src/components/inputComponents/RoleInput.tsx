@@ -7,7 +7,7 @@ import {
 } from '@mui/material'
 import InputProps from '../../types/inputProps'
 
-const RoleInput = ({ register, errors }: InputProps) => {
+const RoleInput = ({ register, errors, roleValue }: any) => {
   return (
     <>
       <FormControl sx={{ m: 1 }}>
@@ -16,7 +16,7 @@ const RoleInput = ({ register, errors }: InputProps) => {
           label="Rola"
           variant="standard"
           {...register('role')}
-          defaultValue=""
+          defaultValue={roleValue}
         >
           <MenuItem value={'Administrator'}>Administrator</MenuItem>
           <MenuItem value={'Dyrektor'}>Dyrektor</MenuItem>

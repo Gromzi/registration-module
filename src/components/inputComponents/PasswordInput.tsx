@@ -21,6 +21,7 @@ const PasswordInput = ({ register, errors }: InputProps) => {
         sx={{ m: 1 }}
         color={errors.password?.message ? 'error' : 'info'}
         {...register('password')}
+        defaultValue=""
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">

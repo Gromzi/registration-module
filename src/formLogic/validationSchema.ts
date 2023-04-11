@@ -26,7 +26,7 @@ const schema = yup.object().shape({
   tel: yup
     .string()
     .matches(
-      /^(?:\d{3}[- .]?){2}\d{3}$|^$/,
+      /^(?:\d{3}[ ]?){2}\d{3}$|^$/,
       'Podaj poprawny numer telefonu'
     ),
   role: yup.string().required('Rola jest wymagana'),

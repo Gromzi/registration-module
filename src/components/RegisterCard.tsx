@@ -31,7 +31,7 @@ const RegisterCard = () => {
         variant="h1"
         sx={{ textAlign: 'center', fontWeight: 'bold', p: 2 }}
       >
-        Zarejestruj się
+        {showSummary ? 'Podsumowanie' : 'Zarejestruj się'}
       </Typography>
 
       <Divider variant="middle" />

@@ -39,7 +39,7 @@ const RegisterForm = ({
       <PasswordInput register={register} errors={errors} />
       <ConfirmPasswordInput register={register} errors={errors} />
 
-      <Divider variant="middle" sx={{ ml: 3, mt: 3, mr: 3 }} />
+      <Divider variant="middle" sx={{ ml: 3, mt: 3, mr: 3, mb: 1 }} />
 
       <NipInput register={register} errors={errors} />
       <PhoneNumberInput register={register} errors={errors} />
@@ -52,7 +52,7 @@ const RegisterForm = ({
       <Divider variant="middle" sx={{ m: 3 }} />
 
       <Button type="submit" variant="contained">
-        Submit
+        Dalej
       </Button>
     </form>
   )

@@ -5,9 +5,13 @@ import {
   Select,
   Typography,
 } from '@mui/material'
-import InputProps from '../../types/inputProps'
+import RoleInputProps from '../../types/RoleInputProps'
 
-const RoleInput = ({ register, errors, roleValue }: any) => {
+const RoleInput = ({
+  register,
+  errors,
+  roleValue,
+}: RoleInputProps) => {
   return (
     <>
       <FormControl sx={{ m: 1 }}>

@@ -1,7 +1,11 @@
 import { Box, Button, Card, Divider, Typography } from '@mui/material'
 import { useState } from 'react'
+import SummaryProps from '../types/summaryProps'
 
-const Summary = ({ userData, setShowSummary }: any) => {
+const Summary = ({
+  userData,
+  handleSetShowSummary,
+}: SummaryProps) => {
   const [error, setError] = useState(false)
 
   const isPhoneNumberEmpty = (): boolean => {
@@ -89,7 +93,7 @@ const Summary = ({ userData, setShowSummary }: any) => {
           sx={{ width: '120px' }}
           variant="contained"
           onClick={() => {
-            setShowSummary(false)
+            handleSetShowSummary(false)
           }}
         >
           Wróć

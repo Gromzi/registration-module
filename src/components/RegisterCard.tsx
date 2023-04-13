@@ -12,7 +12,7 @@ import Summary from './Summary'
 
 const RegisterCard = () => {
   const [showSummary, setShowSummary] = useState(false)
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<FormValues>({
     email: '',
     password: '',
     confirmPassword: '',
@@ -20,6 +20,13 @@ const RegisterCard = () => {
     tel: '',
     role: '',
   })
+
+  const handleSetShowSummary = (newState: boolean) => {
+    setShowSummary(newState)
+  }
+  const handleSetUserData = (newState: FormValues) => {
+    setUserData(newState)
+  }
 
   return (
     <Card
@@ -40,13 +47,13 @@ const RegisterCard = () => {
         {showSummary ? (
           <Summary
             userData={userData}
-            setShowSummary={setShowSummary}
+            handleSetShowSummary={handleSetShowSummary}
           />
         ) : (
           <RegisterForm
             userData={userData}
-            setUserData={setUserData}
-            setShowSummary={setShowSummary}
+            handleSetUserData={handleSetUserData}
+            handleSetShowSummary={handleSetShowSummary}
           />
         )}
       </CardContent>

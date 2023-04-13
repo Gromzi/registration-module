@@ -9,19 +9,20 @@ import { useEffect } from 'react'
 import { useRegistrationForm } from '../formLogic/useRegistrationForm'
 import FormValues from '../types/formValues'
 import { Button, Divider } from '@mui/material'
+import RegisterFormProps from '../types/registerFormProps'
 
 const RegisterForm = ({
   userData,
-  setUserData,
-  setShowSummary,
-}: any) => {
+  handleSetUserData,
+  handleSetShowSummary,
+}: RegisterFormProps) => {
   const { register, handleSubmit, errors, setValue } =
     useRegistrationForm()
 
   const onSubmit = (data: FormValues) => {
-    console.log('Ya boy could NEVER', data)
-    setUserData(data)
-    setShowSummary(true)
+    console.log('userData:', data)
+    handleSetUserData(data)
+    handleSetShowSummary(true)
   }
 
   useEffect(() => {

@@ -23,6 +23,10 @@
   }
 }
 
+.MuiStepLabel-labelContainer span {
+  font-size: 12px;
+}
+
 @media only screen and (max-width: 400px) {
   .appContainer {
     .formCard {

@@ -3,15 +3,19 @@ import {
   CardContent,
   Divider,
   Typography,
-  Button,
+  Stepper,
+  Step,
+  StepLabel,
 } from '@mui/material'
 import { useState } from 'react'
 import FormValues from '../types/formValues'
 import RegisterForm from './RegisterForm'
 import Summary from './Summary'
+import HorizontalStepper from './HorizontalStepper'
 
 const RegisterCard = () => {
-  const [showSummary, setShowSummary] = useState(false)
+  const [activeStep, setActiveStep] = useState<number>(0)
+
   const [userData, setUserData] = useState<FormValues>({
     email: '',
     password: '',
@@ -21,8 +25,8 @@ const RegisterCard = () => {
     role: '',
   })
 
-  const handleSetShowSummary = (newState: boolean) => {
-    setShowSummary(newState)
+  const handleSetActiveStep = (newState: number) => {
+    setActiveStep(newState)
   }
   const handleSetUserData = (newState: FormValues) => {
     setUserData(newState)
@@ -38,22 +42,24 @@ const RegisterCard = () => {
         variant="h1"
         sx={{ textAlign: 'center', fontWeight: 'bold', p: 2 }}
       >
-        {showSummary ? 'Podsumowanie' : 'Zarejestruj się'}
+        {activeStep === 1 ? 'Podsumowanie' : 'Zarejestruj się'}
       </Typography>
 
       <Divider variant="middle" />
 
       <CardContent>
-        {showSummary ? (
+        <HorizontalStepper activeStep={activeStep} />
+
+        {activeStep === 1 ? (
           <Summary
             userData={userData}
-            handleSetShowSummary={handleSetShowSummary}
+            handleSetActiveStep={handleSetActiveStep}
           />
         ) : (
           <RegisterForm
             userData={userData}
             handleSetUserData={handleSetUserData}
-            handleSetShowSummary={handleSetShowSummary}
+            handleSetActiveStep={handleSetActiveStep}
           />
         )}
       </CardContent>

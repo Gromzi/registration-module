@@ -2,10 +2,7 @@ import { Box, Button, Card, Divider, Typography } from '@mui/material'
 import { useState } from 'react'
 import SummaryProps from '../types/summaryProps'
 
-const Summary = ({
-  userData,
-  handleSetShowSummary,
-}: SummaryProps) => {
+const Summary = ({ userData, handleSetActiveStep }: SummaryProps) => {
   const [error, setError] = useState(false)
 
   const isPhoneNumberEmpty = (): boolean => {
@@ -21,7 +18,7 @@ const Summary = ({
   }
 
   return (
-    <Box>
+    <Box sx={{ pt: 2 }}>
       <Box
         sx={{
           display: 'flex',
@@ -93,7 +90,7 @@ const Summary = ({
           sx={{ width: '120px' }}
           variant="contained"
           onClick={() => {
-            handleSetShowSummary(false)
+            handleSetActiveStep(0)
           }}
         >
           Wróć

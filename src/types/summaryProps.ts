@@ -2,7 +2,7 @@ import FormValues from './formValues'
 
 interface SummaryProps {
   userData: FormValues
-  handleSetShowSummary: (newState: boolean) => void
+  handleSetActiveStep: (newState: number) => void
 }
 
 export default SummaryProps

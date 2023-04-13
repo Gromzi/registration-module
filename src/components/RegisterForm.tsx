@@ -14,7 +14,7 @@ import RegisterFormProps from '../types/registerFormProps'
 const RegisterForm = ({
   userData,
   handleSetUserData,
-  handleSetShowSummary,
+  handleSetActiveStep,
 }: RegisterFormProps) => {
   const { register, handleSubmit, errors, setValue } =
     useRegistrationForm()
@@ -22,7 +22,7 @@ const RegisterForm = ({
   const onSubmit = (data: FormValues) => {
     console.log('userData:', data)
     handleSetUserData(data)
-    handleSetShowSummary(true)
+    handleSetActiveStep(1)
   }
 
   useEffect(() => {

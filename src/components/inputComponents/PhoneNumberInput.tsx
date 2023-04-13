@@ -7,6 +7,7 @@ const phoneNumberInput = ({ register, errors }: InputProps) => {
       <TextField
         type="tel"
         label="Numer telefonu (pole opcjonalne)"
+        placeholder="123 456 789"
         variant="standard"
         sx={{ m: 1 }}
         color={errors.tel?.message ? 'error' : 'info'}

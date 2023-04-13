@@ -5,7 +5,7 @@ import {
   Select,
   Typography,
 } from '@mui/material'
-import RoleInputProps from '../../types/RoleInputProps'
+import RoleInputProps from '../../types/roleInputProps'
 
 const RoleInput = ({
   register,

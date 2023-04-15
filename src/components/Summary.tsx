@@ -11,12 +11,12 @@ const Summary = ({ userData, handleSetActiveStep }: SummaryProps) => {
   }
 
   const handleDataSubmit = () => {
-    // SEND userData to backend (exclude the 'confirmPassword')
+    // SEND userData to backend (exclude the 'confirmPassword' and remove whitespaces from 'tel')
     const dataToBackend = {
       email: userData.email,
       password: userData.password,
       nip: userData.nip,
-      tel: userData.tel,
+      tel: userData.tel.replace(/\s+/g, ''),
       role: userData.role,
     }
     console.log('Data sent to backend: ', dataToBackend)
@@ -69,7 +69,7 @@ const Summary = ({ userData, handleSetActiveStep }: SummaryProps) => {
               Numer telefonu:
             </Typography>
             <Typography fontStyle={'italic'}>
-              {userData.tel}
+              {userData.tel.replace(/\s+/g, '')}
             </Typography>
           </Box>
 

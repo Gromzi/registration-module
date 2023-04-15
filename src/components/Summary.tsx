@@ -1,10 +1,10 @@
 import { Box, Button, Divider, Typography } from '@mui/material'
 import { useState } from 'react'
 import SummaryProps from '../types/summaryProps'
-import ShowEmail from './readOnlyComponents/ShowEmail'
-import ShowNip from './readOnlyComponents/ShowNip'
-import ShowTel from './readOnlyComponents/ShowTel'
-import ShowRole from './readOnlyComponents/ShowRole'
+import ShowEmail from './summaryComponents/ShowEmail'
+import ShowNip from './summaryComponents/ShowNip'
+import ShowTel from './summaryComponents/ShowTel'
+import ShowRole from './summaryComponents/ShowRole'
 
 const Summary = ({ userData, handleSetActiveStep }: SummaryProps) => {
   const [error, setError] = useState(false)

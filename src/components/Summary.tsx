@@ -1,6 +1,10 @@
-import { Box, Button, Card, Divider, Typography } from '@mui/material'
+import { Box, Button, Divider, Typography } from '@mui/material'
 import { useState } from 'react'
 import SummaryProps from '../types/summaryProps'
+import ShowEmail from './readOnlyComponents/ShowEmail'
+import ShowNip from './readOnlyComponents/ShowNip'
+import ShowTel from './readOnlyComponents/ShowTel'
+import ShowRole from './readOnlyComponents/ShowRole'
 
 const Summary = ({ userData, handleSetActiveStep }: SummaryProps) => {
   const [error, setError] = useState(false)
@@ -26,70 +30,20 @@ const Summary = ({ userData, handleSetActiveStep }: SummaryProps) => {
 
   return (
     <Box sx={{ pt: 2 }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <Typography fontWeight={'bold'} fontSize={'1.25rem'}>
-          Email:
-        </Typography>
-        <Typography fontStyle={'italic'}>{userData.email}</Typography>
-      </Box>
-
+      <ShowEmail userData={userData} />
       <Divider variant="middle" sx={{ m: 3 }} />
 
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <Typography fontWeight={'bold'} fontSize={'1.25rem'}>
-          NIP:
-        </Typography>
-        <Typography fontStyle={'italic'}>{userData.nip}</Typography>
-      </Box>
-
+      <ShowNip userData={userData} />
       <Divider variant="middle" sx={{ m: 3 }} />
 
       {isPhoneNumberEmpty() ? null : (
         <>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Typography fontWeight={'bold'} fontSize={'1.25rem'}>
-              Numer telefonu:
-            </Typography>
-            <Typography fontStyle={'italic'}>
-              {userData.tel.replace(/\s+/g, '')}
-            </Typography>
-          </Box>
-
+          <ShowTel userData={userData} />
           <Divider variant="middle" sx={{ m: 3 }} />
         </>
       )}
 
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <Typography fontWeight={'bold'} fontSize={'1.25rem'}>
-          Rola w firmie:
-        </Typography>
-        <Typography fontStyle={'italic'}>{userData.role}</Typography>
-      </Box>
-
+      <ShowRole userData={userData} />
       <Divider variant="middle" sx={{ m: 4.5 }} />
 
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>

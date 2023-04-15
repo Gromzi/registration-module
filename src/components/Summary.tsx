@@ -11,8 +11,15 @@ const Summary = ({ userData, handleSetActiveStep }: SummaryProps) => {
   }
 
   const handleDataSubmit = () => {
-    // SEND userData to backend
-    console.log('Data sent to backend: ', userData)
+    // SEND userData to backend (exclude the 'confirmPassword')
+    const dataToBackend = {
+      email: userData.email,
+      password: userData.password,
+      nip: userData.nip,
+      tel: userData.tel,
+      role: userData.role,
+    }
+    console.log('Data sent to backend: ', dataToBackend)
     // Call to backend generates error:
     setError(true)
   }

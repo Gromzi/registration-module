@@ -1,5 +1,6 @@
 import { TextField, Typography } from '@mui/material'
 import InputProps from '../../types/inputProps'
+import DisplayError from './DisplayError'
 
 const NipInput = ({ register, errors }: InputProps) => {
   return (
@@ -13,11 +14,7 @@ const NipInput = ({ register, errors }: InputProps) => {
         {...register('nip')}
         defaultValue=""
       />
-      {errors.nip?.message && (
-        <Typography variant="caption" color="error" sx={{ ml: 1 }}>
-          {errors.nip?.message.toString()}
-        </Typography>
-      )}
+      <DisplayError error={errors.nip?.message} />
     </>
   )
 }

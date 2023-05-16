@@ -3,9 +3,9 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Typography,
 } from '@mui/material'
 import RoleInputProps from '../../types/roleInputProps'
+import DisplayError from './DisplayError'
 
 const RoleInput = ({
   register,
@@ -15,7 +15,9 @@ const RoleInput = ({
   return (
     <>
       <FormControl sx={{ m: 1 }}>
-        <InputLabel color="info">Rola w firmie</InputLabel>
+        <InputLabel color={errors.role?.message ? 'error' : 'info'}>
+          Rola w firmie
+        </InputLabel>
         <Select
           label="Rola"
           variant="standard"
@@ -29,11 +31,7 @@ const RoleInput = ({
           <MenuItem value={'Księgowy'}>Księgowy</MenuItem>
           <MenuItem value={'Pełnomocnik'}>Pełnomocnik</MenuItem>
         </Select>
-        {errors.role?.message && (
-          <Typography variant="caption" color="error" sx={{ ml: 1 }}>
-            {errors.role?.message.toString()}
-          </Typography>
-        )}
+        <DisplayError error={errors.role?.message} />
       </FormControl>
     </>
   )

@@ -1,5 +1,6 @@
 import { InputAdornment, TextField, Typography } from '@mui/material'
 import InputProps from '../../types/inputProps'
+import DisplayError from './DisplayError'
 
 const phoneNumberInput = ({ register, errors }: InputProps) => {
   return (
@@ -21,11 +22,7 @@ const phoneNumberInput = ({ register, errors }: InputProps) => {
           ),
         }}
       />
-      {errors.tel?.message && (
-        <Typography variant="caption" color="error" sx={{ ml: 1 }}>
-          {errors.tel?.message.toString()}
-        </Typography>
-      )}
+      <DisplayError error={errors.tel?.message} />
     </>
   )
 }

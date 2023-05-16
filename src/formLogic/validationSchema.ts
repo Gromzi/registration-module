@@ -4,11 +4,12 @@ import isValidNIP from 'is-valid-nip'
 const schema = yup.object().shape({
   email: yup
     .string()
+    .required('Email jest polem wymaganym')
     .matches(
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
       'Podaj poprawny email'
-    )
-    .required('Email jest polem wymaganym'),
+    ),
+
   password: yup
     .string()
     .required('Hasło jest polem wymaganym')

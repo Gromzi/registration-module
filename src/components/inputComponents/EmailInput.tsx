@@ -1,5 +1,6 @@
 import { TextField, Typography } from '@mui/material'
 import InputProps from '../../types/inputProps'
+import DisplayError from './DisplayError'
 
 const EmailInput = ({ register, errors }: InputProps) => {
   return (
@@ -13,11 +14,7 @@ const EmailInput = ({ register, errors }: InputProps) => {
         {...register('email')}
         defaultValue=""
       />
-      {errors.email?.message && (
-        <Typography variant="caption" color="error" sx={{ ml: 1 }}>
-          {errors.email?.message.toString()}
-        </Typography>
-      )}
+      <DisplayError error={errors.email?.message} />
     </>
   )
 }

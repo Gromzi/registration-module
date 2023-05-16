@@ -1,5 +1,6 @@
 import { TextField, Typography } from '@mui/material'
 import InputProps from '../../types/inputProps'
+import DisplayError from './DisplayError'
 
 const ConfirmPasswordInput = ({ register, errors }: InputProps) => {
   return (
@@ -13,11 +14,7 @@ const ConfirmPasswordInput = ({ register, errors }: InputProps) => {
         {...register('confirmPassword')}
         defaultValue=""
       />
-      {errors.confirmPassword?.message && (
-        <Typography variant="caption" color="error" sx={{ ml: 1 }}>
-          {errors.confirmPassword?.message.toString()}
-        </Typography>
-      )}
+      <DisplayError error={errors.confirmPassword?.message} />
     </>
   )
 }

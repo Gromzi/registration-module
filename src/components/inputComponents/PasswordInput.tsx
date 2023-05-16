@@ -8,6 +8,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import InputProps from '../../types/inputProps'
 import { useState } from 'react'
+import DisplayError from './DisplayError'
 
 const PasswordInput = ({ register, errors }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false)
@@ -41,11 +42,7 @@ const PasswordInput = ({ register, errors }: InputProps) => {
           ),
         }}
       />
-      {errors.password?.message && (
-        <Typography variant="caption" color="error" sx={{ ml: 1 }}>
-          {errors.password?.message.toString()}
-        </Typography>
-      )}
+      <DisplayError error={errors.password?.message} />
     </>
   )
 }
